@@ -16,6 +16,8 @@ public class Boletin10_1 {
      */
     public static void main(String[] args) {
         Adivina obx = new Adivina();
+        obx.pedirNumero();
+        obx.numeroIntentos();
         obx.adivinar();
     }
     

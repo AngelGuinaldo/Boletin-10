@@ -12,25 +12,41 @@ import javax.swing.JOptionPane;
  * @author aguinaldogonzalez
  */
 public class Adivina {
-
-    public void adivinar() {
-
-        String numadivinar = JOptionPane.showInputDialog(null, "Ingresa el numero a adivinar entre 1 y 50");
-        int numenteroadivinar = Integer.parseInt(numadivinar);
-        if (numenteroadivinar >= 1 && numenteroadivinar <= 50) {
-            String numerointentos = JOptionPane.showInputDialog(null, "Ingresa el numero de intentos");
-            int numerointent = Integer.parseInt(numerointentos);
-        } else {
-            JOptionPane.showMessageDialog(null, "Introduce un numero válido");
-        }
+    private int numeroadivinar;
+    private int numerointentos;
+    
+    
+    public int pedirNumero(){
+        do{
+        numeroadivinar = Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero a adivinar entre 1 y 50")); 
+        }while(numeroadivinar<1 || numeroadivinar>50);
+        return numeroadivinar;
+    }
+    public int numeroIntentos(){
         
-        int conta;
-        int intentos=0;
-        for (conta=0; conta==intentos; conta++){
-            
+        numerointentos = Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero de intentos"));
+        return numerointentos;
+        
+    }
+    public void adivinar() {
+        
+        for(int cont=0;cont<numerointentos;cont++){
+        int num = Integer.parseInt(JOptionPane.showInputDialog("Introduce el numero que creas correcto"));
+        if(num>numeroadivinar)
+            JOptionPane.showMessageDialog(null,"El numero secreto es menor");
+        else if(num<numeroadivinar)
+            JOptionPane.showMessageDialog(null,"El numero secreto es mayor");
+        else{
+            JOptionPane.showMessageDialog(null,"Has acertado");
+            cont=numerointentos;
         }
+        }
+            
+      
+            
+    }
    
     
     }
 
-}
+
